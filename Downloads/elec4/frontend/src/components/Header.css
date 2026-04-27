@@ -1,0 +1,124 @@
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  background: rgba(255, 253, 250, 0.88);
+  border-bottom: 1px solid rgba(228, 221, 210, 0.9);
+  box-shadow: 0 8px 24px rgba(29, 35, 45, 0.04);
+  backdrop-filter: blur(16px);
+}
+
+.site-header-inner {
+  width: min(1184px, calc(100% - 40px));
+  min-height: 80px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 280px 1fr 280px;
+  align-items: center;
+  gap: 24px;
+}
+
+.wordmark {
+  display: grid;
+  gap: 3px;
+}
+
+.wordmark strong {
+  width: fit-content;
+  color: var(--text);
+  font-size: 1.58rem;
+  font-weight: 800;
+  line-height: 1;
+  letter-spacing: -0.06em;
+}
+
+.wordmark strong::after {
+  content: "";
+  display: block;
+  height: 3px;
+  margin-top: 6px;
+  border-radius: 999px;
+  background: linear-gradient(90deg, var(--happy), var(--sad), var(--angry));
+}
+
+.wordmark span {
+  color: var(--text-muted);
+  font-size: 0.74rem;
+  font-weight: 700;
+  letter-spacing: 0.01em;
+}
+
+.top-nav {
+  display: flex;
+  justify-content: center;
+  gap: 6px;
+}
+
+.top-nav button {
+  position: relative;
+  border: 1px solid transparent;
+  background: transparent;
+  color: var(--text-muted);
+  border-radius: var(--radius);
+  padding: 10px 14px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  font-weight: 800;
+  transition: color 160ms ease, background 160ms ease, border-color 160ms ease, transform 160ms ease;
+}
+
+.top-nav button::after {
+  content: "";
+  position: absolute;
+  left: 14px;
+  right: 14px;
+  bottom: 5px;
+  height: 2px;
+  border-radius: 999px;
+  background: var(--primary);
+  opacity: 0;
+  transform: scaleX(0.4);
+  transition: opacity 160ms ease, transform 160ms ease;
+}
+
+.top-nav button:hover {
+  color: var(--text);
+  background: rgba(22, 107, 104, 0.07);
+  transform: translateY(-1px);
+}
+
+.top-nav button.active {
+  color: var(--primary);
+  border-color: rgba(22, 107, 104, 0.14);
+  background: rgba(22, 107, 104, 0.08);
+}
+
+.top-nav button.active::after {
+  opacity: 1;
+  transform: scaleX(1);
+}
+
+@media (max-width: 920px) {
+  .site-header-inner {
+    width: min(100% - 24px, 1184px);
+    grid-template-columns: 1fr;
+    gap: 14px;
+    padding: 16px 0;
+  }
+
+  .top-nav {
+    justify-content: flex-start;
+    overflow-x: auto;
+    padding-bottom: 2px;
+  }
+
+  .top-nav button {
+    white-space: nowrap;
+  }
+}
+
+@media (max-width: 560px) {
+  .site-header-inner {
+    width: min(100% - 16px, 1184px);
+  }
+}
